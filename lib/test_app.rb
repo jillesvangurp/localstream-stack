@@ -33,7 +33,6 @@ class TestApp < Sinatra::Base
   documentation 'Returns whatever object @@ctx.helloWrldRuby returns'
   get '/' do 
     logger.info('yay we got something to do')
-    logger.info("logback? #{@@service.hasLogConfig}")
     [200, @@ctx.helloWrldRuby]
   end
   

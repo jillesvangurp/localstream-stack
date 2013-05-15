@@ -14,15 +14,4 @@ public class HelloWorldService {
         LOG.info("sayHi " + name);
         return object().put("message", "Hi " + name).get();
     }
-
-    public boolean hasLogConfig() {
-        LOG.info("hasLogConfig");
-        return this.getClass().getClassLoader().getResource("logback.xml") != null;
-    }
-
-    public static void main(String[] args) {
-        LOG.info("test message");
-    }
-
-
 }
