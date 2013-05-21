@@ -135,6 +135,15 @@ Simply run Fishwife like this. It will pickup config.ru and start a Jetty server
 
 	fishwife
 
-To start the application using fishwife and the vendorized setup, you can use the production script:
+To start the application using fishwife and the vendorized setup, you can use the start.rb script:
     
     ./start.rb
+    
+This also fixes *logging*. The default fishwife script has some hardwired log configuration which gives you very limited control.
+
+The custom logging configuration, prints the word LOCALSTREAM on every line, so if logging is configured correctly, you should see that in the logs. 
+
+The configuration file used is src/main/resources/logback.xml. It gets bundled up in the jar file during configuration.
+
+The start script configures slf4j/nop as the logging solution. What this means is that slf4j is used for logging. That in turn
+is picked up by the logback backend for slf4j on the classpath, which in turn detects the logback.xml configuration file.
