@@ -4,19 +4,18 @@ This project serves as a skeleton project that documents the Localstream server 
 
 # Usage
 
-The rest of this readme talks you through some detailed instructions for getting a working setup.
+The rest of this readme talks you through some detailed instructions for getting a working setup with Jruby, Sinatra, and Fishwife.
 
 # Overview
 
 This sample application demonstrates several things:
 
-* how to integrate spring beans in your Jruby code
-* how to implement some DIY dependency injection in Ruby
-* how to load and access properties
+* how to integrate spring beans in your Jruby code and implement DIY dependency injection in Ruby
+* how to load and access properties using my properties-configuration gem
 * how to document your http API using sinatra-docdsl
 * how to load Java jar files in jruby without jumping through hoops
-* how to use fishwife to run your Sinatra application with your Spring context
-* how to use backbone for logging
+* how to use Fishwife to run your Sinatra application with your Spring context
+* how to use Logback for logging
 
 ## Java
 
@@ -26,12 +25,11 @@ then to build:
 
     mvn clean install 
 
-This will compile the java code and download some dependencies into target/lib that are needed to run the jruby sample app.
-
+This will compile the java code and download some dependencies into target/lib that are needed to run the jruby sample app. The pom.xml file has some configuration for this.
 
 ## Setting up jruby
 
-There are many ways to install jruby. Assuming you want a sensible setup, using rbenv is a pretty good idea.
+There are many ways to install jruby. Assuming you want a sensible setup for development, using rbenv is a pretty good idea.
 This allows you to switch between different ruby installations and give each their own place to dump their gems.
 
 This assumes you have already set up homebrew. If not, RTFM: http://mxcl.github.com/homebrew/
@@ -133,11 +131,10 @@ There's some cruft that you can clean out using
 
 ##	Fishwife
 
-We use fiswhwife, a fork of mizuno and a jetty based rack server, to run our stuff. If you installed it globally,
-you can simply run in the api directory:
+Simply run Fishwife like this. It will pickup config.ru and start a Jetty server:
 
 	fishwife
 
 To start the application using fishwife and the vendorized setup, you can use the production script:
     
-    ./fishwife-production.rb
+    ./start.rb
